@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import { useCallback } from 'react';
 
-function question1({navigation, route}) {
+function Question({navigation, route}) {
   let questions = route.params.exerciseList;
 
   // call exercise
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default question1
+export default Question
