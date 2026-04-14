@@ -4,7 +4,11 @@ import { useCallback, useState } from 'react';
 import { ButtonGroup } from '@rneui/themed';
 
 function Question({navigation, route}) {
-  // let questions = route.params.exerciseList;
+
+  // let question1 = questionList[0].choices;
+  let questionList = route.params.questionList;
+  // let questions = questionList.map(item => item.prompt);
+  // let questions = question1.choices;
 
   // call exercise
   let nextQuestion = useCallback(() => {
@@ -13,21 +17,29 @@ function Question({navigation, route}) {
   })
   
 // export default() => {
-const [selectedIndex, setSelectedIndex] = useState(0);
+const [selectedIndex, setSelectedIndex] = useState(-1);
 const [selectedIndexes, setSelectedIndexes] = useState([0, 2, 3]);
 
 return (
   <>
+  <View>
+    <Text style={styles.header}>{questionList[0].prompt}</Text>
+  </View>
+
     <ButtonGroup
-      buttons={['test1', 'test 2', 'test 3']}
+      buttons={questionList[0].choices}
+
       selectedIndex={selectedIndex}
       onPress={(value) => {
         setSelectedIndex(value);
       }}
+      buttonStyle={{backgroundColor:"white"}}
+      containerStyle={{width: 400, alignSelf: "center"}}
+      vertical
     />
-    <View>
 
-    <Button onPress={() => nextQuestion(item)} title="Next"></Button>
+    <View style={{width: 200, alignSelf: "center"}}>
+      <Button onPress={() => nextQuestion(item)} title="Next"></Button>
     </View>
     {/* <ButtonGroup
       buttons={['Multiple', 'Select', 'Button', 'Group']}
@@ -63,10 +75,9 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 30,
-    fontFamily: "Verdana",
-    color: "#092C56",
     marginBottom: 20,
-    marginTop: 270,
+    marginTop: 20,
+    textAlign: "center"
   },
   buttons: {
     marginBottom: 20,
