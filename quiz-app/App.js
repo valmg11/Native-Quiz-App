@@ -44,6 +44,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Question" component={Question} initialParams={{questions}}/>
+        <Stack.Screen name="Question 2" component={Question} initialParams={{questions}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
