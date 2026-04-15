@@ -3,46 +3,41 @@ import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import { useCallback, useState } from 'react';
 import { ButtonGroup } from '@rneui/themed';
 
-function Summary({navigation, route}) {
+function Summary({navigation, route, score}) {
   let questionList = route.params.questionList;
-  // next question
-//   let nextQuestion = useCallback(() => {
-//     navigation.push("Question 4",  {questionIndex: 3, questionList});
-//   })
-  // let currentQuestion = questionList.find(q => q.index === questionIndex);
-  
-// const [selectedIndex, setSelectedIndex] = useState(-1);
+  // let score = route.params.score;
 
 return (
   <>
   {/* change to map */}
   <View>
     <Text style={styles.header}>Summary</Text>
+    <Text style={styles.text}>Score: {score}/3</Text>
+
     <Text style={styles.text}>{questionList[0].prompt}</Text>
-    <Text style={styles.text}>{questionList[0].choices}</Text>
+    {questionList[0].choices.map((choice, index) => (
+      <Text key={index} style={styles.summaryAnswers}>{choice}</Text>
+    ))}
 
     <Text style={styles.text}>{questionList[1].prompt}</Text>
-    <Text style={styles.text}>{questionList[1].choices}</Text>
+    {questionList[1].choices.map((choice, index) => (
+      <Text key={index} style={styles.summaryAnswers}>{choice}</Text>
+    ))}
 
     <Text style={styles.text}>{questionList[2].prompt}</Text>
-    <Text style={styles.text}>{questionList[2].choices}</Text>
+    {questionList[2].choices.map((choice, index) => (
+      <Text key={index} style={styles.summaryAnswers}>{choice}</Text>
+    ))}
+
+    {/* <FlatList
+    data={questionList}
+    renderItem={({item}) => <Text>{item.prompt}
+    </Text>}/>
+    <FlatList
+    data={questionList}
+    renderItem={({item}) => <Text>{item.choices}
+    </Text>}/> */}
   </View>
-
-    {/* <ButtonGroup
-      buttons={questionList[2].choices}
-
-      selectedIndex={selectedIndex}
-      onPress={(value) => {
-        setSelectedIndex(value);
-      }}
-      buttonStyle={{backgroundColor:"white"}}
-      containerStyle={{width: 400, alignSelf: "center"}}
-      vertical
-    />
-
-    <View style={{width: 200, alignSelf: "center"}}>
-      <Button onPress={() => nextQuestion()} title="Next"></Button>
-    </View> */}
   </>
 )
 }
@@ -62,8 +57,14 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 15,
-    marginBottom: 20,
-    marginTop: 20,
+    marginBottom: 10,
+    marginTop: 10,
+    textAlign: "center"
+  },
+  summaryAnswers: {
+    fontSize: 15,
+    // marginBottom: 20,
+    marginTop: 10,
     textAlign: "center"
   },
   buttons: {

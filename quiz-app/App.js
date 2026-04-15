@@ -9,6 +9,9 @@ import Summary from './components/Summary';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  // let score = 0;
+  // const [score, setScore] = useState(0);
+
   let questionList = [
     {
     prompt: "Question 1",

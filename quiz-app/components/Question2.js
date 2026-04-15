@@ -3,20 +3,22 @@ import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import { useCallback, useState } from 'react';
 import { ButtonGroup } from '@rneui/themed';
 
-function Question2({navigation, route}) {
+function Question2({navigation, route, score}) {
   let questionList = route.params.questionList;
+  // let score = route.params.score;
   // next question
   let nextQuestion = useCallback(() => {
     navigation.push("Question 3",  {questionIndex: 2, questionList});
   })
   // let currentQuestion = questionList.find(q => q.index === questionIndex);
 
-const [selectedIndexes, setSelectedIndexes] = useState([-1]);
+  const [selectedIndexes, setSelectedIndexes] = useState([-1]);
 
 return (
   <>
   <View>
     <Text style={styles.header}>{questionList[1].prompt}</Text>
+    <Text>{score}</Text>
   </View>
 
     <ButtonGroup

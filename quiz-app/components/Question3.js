@@ -11,7 +11,7 @@ function Question3({navigation, route}) {
   })
   // let currentQuestion = questionList.find(q => q.index === questionIndex);
   
-const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
 return (
   <>
