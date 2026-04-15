@@ -3,11 +3,11 @@ import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import { useCallback, useState } from 'react';
 import { ButtonGroup } from '@rneui/themed';
 
-function Question({navigation, route}) {
+function Question3({navigation, route}) {
   let questionList = route.params.questionList;
   // next question
   let nextQuestion = useCallback(() => {
-    navigation.push("Question 2",  {questionIndex: 1, questionList});
+    navigation.push("Summary",  {questionIndex: 3, questionList});
   })
   // let currentQuestion = questionList.find(q => q.index === questionIndex);
   
@@ -16,11 +16,11 @@ const [selectedIndex, setSelectedIndex] = useState(-1);
 return (
   <>
   <View>
-    <Text style={styles.header}>{questionList[0].prompt}</Text>
+    <Text style={styles.header}>{questionList[2].prompt}</Text>
   </View>
 
     <ButtonGroup
-      buttons={questionList[0].choices}
+      buttons={questionList[2].choices}
 
       selectedIndex={selectedIndex}
       onPress={(value) => {
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Question
+export default Question3

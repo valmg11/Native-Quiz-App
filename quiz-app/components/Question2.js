@@ -3,34 +3,33 @@ import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import { useCallback, useState } from 'react';
 import { ButtonGroup } from '@rneui/themed';
 
-function Question({navigation, route}) {
+function Question2({navigation, route}) {
   let questionList = route.params.questionList;
   // next question
   let nextQuestion = useCallback(() => {
-    navigation.push("Question 2",  {questionIndex: 1, questionList});
+    navigation.push("Question 3",  {questionIndex: 2, questionList});
   })
   // let currentQuestion = questionList.find(q => q.index === questionIndex);
-  
-const [selectedIndex, setSelectedIndex] = useState(-1);
+
+const [selectedIndexes, setSelectedIndexes] = useState([-1]);
 
 return (
   <>
   <View>
-    <Text style={styles.header}>{questionList[0].prompt}</Text>
+    <Text style={styles.header}>{questionList[1].prompt}</Text>
   </View>
 
     <ButtonGroup
-      buttons={questionList[0].choices}
-
-      selectedIndex={selectedIndex}
+      buttons={questionList[1].choices}
+      selectMultiple
+      selectedIndexes={selectedIndexes}
       onPress={(value) => {
-        setSelectedIndex(value);
+        setSelectedIndexes(value);
       }}
       buttonStyle={{backgroundColor:"white"}}
       containerStyle={{width: 400, alignSelf: "center"}}
       vertical
     />
-
     <View style={{width: 200, alignSelf: "center"}}>
       <Button onPress={() => nextQuestion()} title="Next"></Button>
     </View>
@@ -56,4 +55,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Question
+export default Question2
