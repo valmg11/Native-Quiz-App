@@ -14,35 +14,35 @@ export default function App() {
 
   let questionList = [
     {
-    prompt: "Question 1",
+    prompt: "Where is Tokkari Center located?",
   type: "multiple-choice",
   choices: [
-    "A",
-    "B",
-    "C",
-    "D",
+    "Toba, Mie, Japan",
+    "Point Pleasant Beach, New Jersey",
+    "Monbetsu, Hokkaido, Japan",
+    "Lauwersoog, Netherlands",
   ],
   correct: 0
   },
     {
-    prompt: "Question 2",
+    prompt: "Who are Tokkari Center's youngest seals?",
   type: "multiple-answer",
   choices: [
-    "A",
-    "B",
-    "C",
-    "D",
+    "Katsunori",
+    "Tsuki",
+    "Agu",
+    "Mashiro",
   ],
-  correct: [0,2]
+  correct: [1,3]
   },
     {
-    prompt: "Question 3",
+    prompt: "Tokkari Center is a seal protection facility",
   type: "true-false",
   choices: [
     "True",
     "False",
   ],
-  correct: 1
+  correct: 0
   },
   ]
   return (
