@@ -9,9 +9,6 @@ import Summary from './components/Summary';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  // let score = 0;
-  // const [score, setScore] = useState(0);
-
   let questionList = [
     {
     prompt: "Where is Tokkari Center located?",
@@ -22,7 +19,7 @@ export default function App() {
     "Monbetsu, Hokkaido, Japan",
     "Lauwersoog, Netherlands",
   ],
-  correct: 0
+  correct: 2
   },
     {
     prompt: "Who are Tokkari Center's youngest seals?",

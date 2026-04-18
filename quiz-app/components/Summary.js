@@ -5,38 +5,29 @@ import { ButtonGroup } from '@rneui/themed';
 
 function Summary({navigation, route, score}) {
   let questionList = route.params.questionList;
-  // let score = route.params.score;
+
+  let totalScore = route.params.finalScore;
 
 return (
   <>
-  {/* change to map */}
   <View>
     <Text style={styles.header}>Summary</Text>
-    <Text style={styles.text}>Score: {score}/3</Text>
+    <Text style={styles.score}>Score: {totalScore}/3</Text>
 
-    <Text style={styles.text}>{questionList[0].prompt}</Text>
+    <Text style={styles.summaryPrompts}>{questionList[0].prompt}</Text>
     {questionList[0].choices.map((choice, index) => (
       <Text key={index} style={styles.summaryAnswers}>{choice}</Text>
     ))}
 
-    <Text style={styles.text}>{questionList[1].prompt}</Text>
+    <Text style={styles.summaryPrompts}>{questionList[1].prompt}</Text>
     {questionList[1].choices.map((choice, index) => (
       <Text key={index} style={styles.summaryAnswers}>{choice}</Text>
     ))}
 
-    <Text style={styles.text}>{questionList[2].prompt}</Text>
+    <Text style={styles.summaryPrompts}>{questionList[2].prompt}</Text>
     {questionList[2].choices.map((choice, index) => (
       <Text key={index} style={styles.summaryAnswers}>{choice}</Text>
     ))}
-
-    {/* <FlatList
-    data={questionList}
-    renderItem={({item}) => <Text>{item.prompt}
-    </Text>}/>
-    <FlatList
-    data={questionList}
-    renderItem={({item}) => <Text>{item.choices}
-    </Text>}/> */}
   </View>
   </>
 )
@@ -55,9 +46,22 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: "center"
   },
+  score: {
+    fontSize: 22,
+    marginBottom: 10,
+    marginTop: 10,
+    textAlign: "center"
+  },
   text: {
     fontSize: 15,
     marginBottom: 10,
+    marginTop: 10,
+    textAlign: "center"
+  },
+  summaryPrompts: {
+    fontSize: 15,
+    fontWeight: "bold",
+    // marginBottom: 20,
     marginTop: 10,
     textAlign: "center"
   },

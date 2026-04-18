@@ -5,12 +5,12 @@ import { ButtonGroup } from '@rneui/themed';
 
 function Question2({navigation, route, score}) {
   let questionList = route.params.questionList;
-  // let score = route.params.score;
-  // next question
+  let updatedScore = route.params.score;
+  
+  let [newScore, setNewScore] = useState(updatedScore);
   let nextQuestion = useCallback(() => {
-    navigation.push("Question 3",  {questionIndex: 2, questionList});
+    navigation.push("Question 3",  {questionIndex: 2, questionList, newScore});
   })
-  // let currentQuestion = questionList.find(q => q.index === questionIndex);
 
   const [selectedIndexes, setSelectedIndexes] = useState([-1]);
 
@@ -18,7 +18,7 @@ return (
   <>
   <View>
     <Text style={styles.header}>{questionList[1].prompt}</Text>
-    <Text>{score}</Text>
+    {/* <Text>{updatedScore}</Text> */}
   </View>
 
     <ButtonGroup
@@ -27,6 +27,12 @@ return (
       selectedIndexes={selectedIndexes}
       onPress={(value) => {
         setSelectedIndexes(value);
+        if (value.includes(1)) {
+          setNewScore(updatedScore + 1);
+        }
+        if (value.includes(3)) {
+          setNewScore(updatedScore + 1);
+        }
       }}
       buttonStyle={{backgroundColor:"white"}}
       containerStyle={{width: 400, alignSelf: "center"}}
