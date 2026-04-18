@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Question from './components/Question';
+import Question1 from './components/Question1';
 import Question2 from './components/Question2';
 import Question3 from './components/Question3';
 import Summary from './components/Summary';
@@ -21,6 +21,7 @@ export default function App() {
   ],
   correct: 2
   },
+
     {
     prompt: "Who are Tokkari Center's youngest seals?",
   type: "multiple-answer",
@@ -32,6 +33,7 @@ export default function App() {
   ],
   correct: [1,3]
   },
+
     {
     prompt: "Tokkari Center is a seal protection facility",
   type: "true-false",
@@ -40,13 +42,13 @@ export default function App() {
     "False",
   ],
   correct: 0
-  },
-  ]
+  }];
+  
   return (
     // screens
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Question" component={Question} initialParams={{questionList}}/>
+      <Stack.Navigator screenOptions={{headerLeft: null}}>
+        <Stack.Screen name="Question 1" component={Question1} initialParams={{questionList}}/>
         <Stack.Screen name="Question 2" component={Question2} initialParams={{questionList}}/>
         <Stack.Screen name="Question 3" component={Question3} initialParams={{questionList}}/>
         <Stack.Screen name="Summary" component={Summary} initialParams={{questionList}}/>      

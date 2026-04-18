@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { useCallback, useState } from 'react';
 import { ButtonGroup } from '@rneui/themed';
 
@@ -7,18 +7,21 @@ function Question3({navigation, route}) {
   let questionList = route.params.questionList;
   let updatedScore2 = route.params.newScore;
   
+  // update score
   let [finalScore, setFinalScore] = useState(updatedScore2);
+
+  // push score to next page
   let nextQuestion = useCallback(() => {
     navigation.push("Summary",  {questionIndex: 3, questionList, finalScore});
   })
   
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+  // -1 makes no choices selected
+  let [selectedIndex, setSelectedIndex] = useState(-1);
 
 return (
   <>
   <View>
     <Text style={styles.header}>{questionList[2].prompt}</Text>
-    {/* <Text>{finalScore}</Text> */}
   </View>
 
     <ButtonGroup
@@ -27,6 +30,7 @@ return (
       selectedIndex={selectedIndex}
       onPress={(value) => {
         setSelectedIndex(value);
+        // add point for correct answer
         if (value === 0) {
           setFinalScore(updatedScore2 + 1)
         }
@@ -36,7 +40,7 @@ return (
       vertical
     />
 
-    <View style={{width: 200, alignSelf: "center"}}>
+    <View style={{width: 150, alignSelf: "center"}}>
       <Button onPress={() => nextQuestion()} title="Next"></Button>
     </View>
   </>
@@ -55,9 +59,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 20,
     textAlign: "center"
-  },
-  buttons: {
-    marginBottom: 20,
   }
 });
 
